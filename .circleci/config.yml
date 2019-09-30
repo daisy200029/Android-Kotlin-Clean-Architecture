@@ -28,13 +28,13 @@ jobs:
           name: Run Lint
           command: ./gradlew lintDebug
       - store_test_results:
-          path: app/build/reports/
+          path: sample/build/reports/
           destination: test-results/
       - run:
           name: Run Unit Tests
           command: ./gradlew testDebugUnitTest
       - store_test_results:
-          path: app/build/reports/
+          path: sample/build/reports/
           destination: test-results/
       - save_cache:
           paths:
