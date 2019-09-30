@@ -3,6 +3,9 @@
 # Check https://circleci.com/docs/2.0/language-android/ for more details
 #
 version: 2.1
+general:
+    artifacts:
+        - /home/ubuntu/Android-Kotlin-Clean-Architecture/app/build/outputs/apk/
 jobs:
   build:
     working_directory: ~/Android-Kotlin-Clean-Architecture
@@ -25,17 +28,14 @@ jobs:
           name: Run Lint
           command: ./gradlew lintDebug
       - store_test_results:
-          path: app/build/test-results
+          path: app/build/reports/
           destination: test-results/
       - run:
           name: Run Unit Tests
           command: ./gradlew testDebugUnitTest
       - store_test_results:
-          path: app/build/test-results
+          path: app/build/reports/
           destination: test-results/
-      - store_artifacts:
-          path: app/build/outputs/apk/
-          destination: apks/
       - save_cache:
           paths:
             - ~/.gradle
